@@ -32,10 +32,12 @@ jobs:
         run: |
            if [ -f deploy.zip ]; then rm deploy.zip; fi
 
-      - name: Set environment variable.
+      - name: Read Environ Variables.
         run: |
-          echo "EMAIL_SENDER=${{ secrets.EMAIL_SENDER }}" >> $GITHUB_ENV
-          echo "POST_MARK_KEY=${{ secrets.POST_MARK_KEY }}" >> $GITHUB_ENV
+          if [ "$EMAIL_SENDER"=="asad@coso.ai" ]; then echo "got sender email" fi
+        env:
+          POST_MARK_KEY: ${{ secrets.POST_MARK_KEY }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
 
       - name: Build deployment package
         run: |
