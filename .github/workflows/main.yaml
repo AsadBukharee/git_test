@@ -33,11 +33,11 @@ jobs:
            if [ -f deploy.zip ]; then rm deploy.zip; fi
 
       - name: Read Environ Variables.
-        run: |
-          if [ "$EMAIL_SENDER" == "asad@coso.ai" ]; then echo "got sender email"; fi
         env:
           POST_MARK_KEY: ${{ secrets.POST_MARK_KEY }}
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+        run:
+          echo "$EMAIL_SENDER"
 
 
       - name: Build deployment package
