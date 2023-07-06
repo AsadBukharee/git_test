@@ -34,7 +34,7 @@ jobs:
 
       - name: Read Environ Variables.
         run: |
-          if [ "$EMAIL_SENDER"=="asad@coso.ai" ]; then echo "got sender email" fi
+          if [ "$EMAIL_SENDER"=="asad@coso.ai" ] then echo "got sender email" fi
         env:
           POST_MARK_KEY: ${{ secrets.POST_MARK_KEY }}
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
