@@ -30,7 +30,7 @@ jobs:
 
       - name: Remove existing deploy.zip file
         run: |
-          rm deploy.zip
+           if [ -f deploy.zip ]; then rm deploy.zip; fi
 
       - name: Build deployment package
         run: |
