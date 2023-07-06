@@ -11,5 +11,5 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': json.dumps(f"Time is :  {formatted_time} and Requests Version is : {requests.__version__} and envs = {os.getenv('AWS_ACCESS_KEY_ID')} , {os.getenv('AWS_SECRET_ACCESS_KEY')}")
+        'body': json.dumps(f"envs = {os.getenv('POST_MARK_KEY')} , {os.getenv('EMAIL_SENDER')}")
     }
