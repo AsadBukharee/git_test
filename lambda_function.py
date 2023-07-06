@@ -11,5 +11,5 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': json.dumps(f"envs = {os.getenv('POST_MARK_KEY')} , {os.getenv('EMAIL_SENDER')}")
+        'body': json.dumps(f" envs = {os.getenv('POST_MARK_KEY')} , {os.getenv('EMAIL_SENDER')} " )
     }
