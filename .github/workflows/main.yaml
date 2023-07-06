@@ -32,14 +32,6 @@ jobs:
         run: |
            if [ -f deploy.zip ]; then rm deploy.zip; fi
 
-      - name: Read Environ Variables.
-        env:
-          POST_MARK_KEY: ${{ secrets.POST_MARK_KEY }}
-          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
-        run:
-          echo "$EMAIL_SENDER"
-
-
       - name: Build deployment package
         run: |
           cd lib
@@ -48,6 +40,8 @@ jobs:
           echo " Zipping deployment package for git_test ..."
           zip -g deploy.zip lambda_function.py 
 
-      - name: Deploy Lambda function
+      - name: Deploy Lambda function.
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
         run: |
           aws lambda update-function-code --function-name git_test --zip-file fileb://deploy.zip
